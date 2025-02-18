@@ -25,10 +25,10 @@ function App() {
   const [Isopen, setIsopen] = useState(false);
   const [Tasks, setTasks] = useState(getItem());
   const [Newtask, setNewktask] = useState({
-    taskname: "test",
-    Date: "2022-10-10",
-    deadline: "2022-10-10",
-    notes: "test",
+    taskname: "",
+    Date: "",
+    deadline: "",
+    notes: "",
     isCompleted: false,
   });
   const openprompt = () => {
@@ -132,7 +132,7 @@ function App() {
           </div>
           <div className="flex  justify-center items-center h-full flex-col">
             {Tasks.map((task, index)=>{
-              return <Task taskname={task.taskname} key={index} />
+              return <Task taskname={task.taskname} Date={task.date} notes={task.notes} deadline={task.deadline} key={index} />
             })}
           </div>
         </div>
