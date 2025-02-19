@@ -2,23 +2,7 @@ import "./App.css";
 import Navebar from "./components/Navebar";
 import Task from "./components/Task";
 import { useState } from "react";
-
-const UseLocalStorage = (key, initialValue) => {
-  const setItem = (value) => {
-    localStorage.setItem(key, JSON.stringify(value));
-  };
-
-  const getItem = () => {
-    const stored = localStorage.getItem(key);
-    return stored ? JSON.parse(stored) : initialValue;
-  };
-
-  const removeItem = () => {
-    localStorage.removeItem(key);
-  };
-
-  return { setItem, getItem, removeItem };
-};
+import UseLocalStorage from "./hooks/UseLocalStorage";
 
 function App() {
   const { setItem, getItem } = UseLocalStorage("tasks", []);
@@ -38,7 +22,7 @@ function App() {
     setIsopen(false);
   };
   function handleinputchange(event) {
-    const { name, value } = event.target; //hna mchni fahm kifeh t5dm bs7 heya li t5yrlk lfield 7assb name li 3nd , laken taskname ..., ,
+    const { name, value } = event.target; // heya li t5yrlk lfield 7assb name li 3nd , laken taskname ..., ,
     setNewktask((t) => ({ ...t, [name]: value })); //copying the previous state and updating the taskname , copyina l objext f t and updating the taskname
   }
   function addNewtask() {
@@ -46,10 +30,10 @@ function App() {
     setTasks(tasknew);
     setItem(tasknew);
     setNewktask({
-      taskname: "",
-      Date: "",
-      deadline: "",
-      notes: "",
+      taskname: "task name should apear here",
+      Date: "-none-",
+      deadline: "-none-",
+      notes: " NO NOTES",
       isCompleted: false,
     });
     closeprompt();
@@ -119,7 +103,7 @@ function App() {
         </div>
       )}
       <div className="flex">
-        <Navebar />
+        <Navebar  className="fixed" />
         <div className="flex flex-col w-full">
           <div className="flex justify-between items-center">
             <h1 className="text-5xl text-black m-6 p-6">Today's Liste</h1>
@@ -132,7 +116,7 @@ function App() {
           </div>
           <div className="flex  justify-center items-center h-full flex-col">
             {Tasks.map((task, index)=>{
-              return <Task taskname={task.taskname} Date={task.date} notes={task.notes} deadline={task.deadline} key={index} />
+              return <Task taskname={task.taskname} Date={task.Date} notes={task.notes} deadline={task.deadline} key={index} />
             })}
           </div>
         </div>
