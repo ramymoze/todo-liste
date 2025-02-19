@@ -1,10 +1,8 @@
 import { MdEdit } from "react-icons/md";
 import { IoTrashBin } from "react-icons/io5";
-import { FaLongArrowAltRight } from "react-icons/fa";
+ import { FaLongArrowAltRight, FaTasks } from "react-icons/fa";
 import { useState } from "react";
-import UseLocalStorage from "../hooks/UseLocalStorage";
 function Task(props) {
-  const {removeItem} = UseLocalStorage("tasks", []);
   const [Detaille, setDetaille] = useState(false);
   function handleDetails() {
     setDetaille(!Detaille);
@@ -35,7 +33,7 @@ function Task(props) {
               <div className="flex justify-center ">
                 <h1 className="text-4xl text-black border-b-2 pb-3 border-black">{props.taskname}</h1>
               </div>
-              <div className="flex justify-between ">
+              *<div className="flex justify-between ">
                 <p> starting date : {props.Date}</p>
                 <FaLongArrowAltRight size={30} />
                 <p> deadline :{props.deadline}</p>
