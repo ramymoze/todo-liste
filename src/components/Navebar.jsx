@@ -1,14 +1,21 @@
-function Navebar(){
+function Navebar({openprompt , changeTabTotasks , changeTabTopomodoro , Tab} ){
 
-return(// felx-col beh tglbha colomn 
+return( 
 <>
-  <div className="h-screen w-64 bg-blue-600 flex flex-col p-4 flex-shrink-0">
-   <div className=" mt-10 text-2xl space-y-8 flex flex-col">
-        <button className="border-b-2 border-black p-3 rounded-md hover:bg-blue-800 hover:text-white ">today's tasks</button>
-        <button className="border-b-2 border-black p-3 rounded-md hover:bg-blue-800 hover:text-white  ">tasks</button>
-        <button className="border-b-2 border-black p-3 rounded-md hover:bg-blue-800 hover:text-white hover: ">calender</button>
-    </div>
-  </div>
+<div className="flex justify-between items-center">
+            <div className="flex">
+            <button onClick={changeTabTotasks} className={`text-3xl text-black m-6 p-6   ${Tab === "tasks" ? "text-blue-500 border-b-2 border-blue-500" : "text-black"}`} >Task's Liste</button>
+            
+            <button onClick={changeTabTopomodoro} className={`text-3xl text-black m-6 p-6 ${Tab === "pomodoro" ? "text-blue-500 border-b-2 border-blue-500" : "text-black"}`}>pomodoro</button>
+            </div>
+            <button
+              onClick={openprompt}
+              
+              className="flex justify-center items-center text-2xl text-black border-[3px] h-12 w-30 border-blue-600 rounded-lg m-2 p-2  bg-blue-200 hover:bg-blue-900 hover:text-white"
+            >
+              <h1>+ Newtask </h1>
+            </button>
+          </div>
 
 </>
 
